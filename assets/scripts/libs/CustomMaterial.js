@@ -9,9 +9,8 @@ const Material = renderEngine.Material;
 const testMaterial = 'test';
 
 var CustomMaterial = (function (Material$$1) {
-	console.log('[CustomMaterial ]外部 Material$$1 = ' ,Material$$1);
 	function CustomMaterial(shaderName, params, defines) {
-		console.log('[CustomMaterial ]内部 Material$$1 = ' ,Material$$1);
+		console.log("addShader - shader already exist: ", shaderName);
 		// shaderName = 'sprite';
 		 Material$$1.call(this, false);
 
@@ -40,6 +39,8 @@ var CustomMaterial = (function (Material$$1) {
 		if (params) {
 			techParams = techParams.concat(params);
 		}
+
+		console.log('[CustomMaterial constructor function ] shader 渲染属性 techParams = ', techParams);
 		var mainTech = new renderer.Technique(
 			['transparent'],
 			techParams,
@@ -135,8 +136,8 @@ var CustomMaterial = (function (Material$$1) {
 
 let g_shaders = {};
 CustomMaterial.addShader = function (shader) {
+
 	if (g_shaders[shader.name]) {
-		console.log("addShader - shader already exist: ", shader.name);
 		return;
 	}
 

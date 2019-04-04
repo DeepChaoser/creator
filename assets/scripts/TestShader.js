@@ -67,15 +67,6 @@ void main()
 }`,
 };
 
-class CustomMaterial  {
-    
-    constructor(shaderName, params, defines) {
-        this.shaderName = shaderName;
-        this.params = params;
-        this.defines = defines;
-    }
-};
-
 cc.Class({
     extends: cc.Component,
 
